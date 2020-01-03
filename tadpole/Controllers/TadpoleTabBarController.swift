@@ -18,26 +18,25 @@ class TadpoleTabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
         
+        class MapNavigationController: UINavigationController {
+            override var preferredStatusBarStyle: UIStatusBarStyle {
+                return .lightContent
+            }
+        }
         
-        let viewController = ViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.tabBarItem.image = UIImage(named: "map")
-//        navigationController.title = "tadpole"
         
         let accountViewController = AccountViewController()
-        let accountNavigationController = UINavigationController(rootViewController: accountViewController)
+        let accountNavigationController = MapNavigationController(rootViewController: accountViewController)
         accountNavigationController.tabBarItem.image = UIImage(named: "profile")
-//        accountNavigationController.title = "account"
         
-        let browseViewController = BrowseViewController()
-        let browseNavigationController = UINavigationController(rootViewController: browseViewController)
-        browseNavigationController.tabBarItem.image = UIImage(named: "search")
-//        browseNavigationController.title = "browse"
+        let mapv2 = ViewControllerv2()
+        let mapv2nc = MapNavigationController(rootViewController: mapv2)
+        mapv2nc.tabBarItem.image = UIImage(named: "search")
         
-        viewControllers = [browseNavigationController, navigationController, accountNavigationController]
-        
-        self.selectedIndex = 1
-//        self.removeTabBarTitles()
+        viewControllers = [mapv2nc, accountNavigationController]
+        self.selectedIndex = 0
+        self.tabBar.barTintColor = UIColor.black
+
     }
     
     

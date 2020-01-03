@@ -109,16 +109,7 @@ class SignInSignUpViewController: UIViewController, GIDSignInUIDelegate, UIGestu
             self.signInButton.alpha = 1
         }
     }
-    
-//    @objc func dismissIfSignedIn() {
-//        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-//            DispatchQueue.main.async {
-//                GIDSignIn.sharedInstance()?.signInSilently()
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        }
-//    }
-    
+
     
     func setupConstraints() {
         

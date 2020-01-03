@@ -10,19 +10,27 @@ import UIKit
 import MapKit
 import CoreLocation
 import GoogleSignIn
+import Mapbox
+import NVActivityIndicatorView
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MGLMapViewDelegate {
     
     // Views and variables
     
-    var mapView: MKMapView!
+    
+    var mapView: MGLMapView!
     let locationManager = CLLocationManager()
+    let loadingIndiator = NVActivityIndicatorView(frame: .zero, type: .circleStrokeSpin, color: Colors.main)
+    var newLilypadButton: UIBarButtonItem!
     
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNeedsStatusBarAppearanceUpdate()
         checkSignIn()
         
         view.backgroundColor = .white
@@ -30,41 +38,86 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.navigationController!.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: Colors.main,
              NSAttributedString.Key.font: UIFont(name: "Comfortaa-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24, weight: .bold)]
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
+    
+
         
+        newLilypadButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addLilypadButtonTapped))
+        newLilypadButton.tintColor = Colors.main
+        self.navigationItem.rightBarButtonItem = newLilypadButton
         
-        mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        mapView.delegate = self
+        mapView = MGLMapView(frame: view.bounds)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
-        
+        mapView.styleURL = MGLStyle.darkStyleURL
+        mapView.delegate = self
+        mapView.showsUserLocation = true
         checkLocationServices()
-        addAnnotations()
+    
+        loadingIndiator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadingIndiator)
         
-//        addMarker(mapView: mapView)
+        setupConstraints()
+        view.bringSubviewToFront(loadingIndiator)
+        loadingIndiator.startAnimating()
+        fetchLilypads()
+        
     }
     
-    
-    func addMarker(mapView: MKMapView) {
-//        let identifier = "annotationid"
-//        let annotation = MKPointAnnotation()
-//        annotation.title = "a lilypad!"
-//        annotation.subtitle = "lilypad description description description"
-//        annotation.coordinate = mapView.centerCoordinate
-//        let pinImage = UIImage(named: "test")
+    @objc func addLilypadButtonTapped() {
+        let addLilypadController = AddLilypadViewController()
+        self.navigationController?.pushViewController(addLilypadController, animated: true)
     }
+
     
     func addAnnotations() {
-        let a1 = MKPointAnnotation()
-        a1.title = "Lily num 1"
+        let a1 = MGLPointAnnotation()
         a1.coordinate = CLLocationCoordinate2D(latitude: 40.869593, longitude: -74.077342)
-        
-        let a2 = MKPointAnnotation()
-        a2.title = "second lilypad"
-        a2.subtitle = "This is a subtitle"
-        a2.coordinate = CLLocationCoordinate2D(latitude: 40.867211, longitude: -74.062025)
-        
+        a1.title = "lily1"
         mapView.addAnnotation(a1)
-        mapView.addAnnotation(a2)
+    }
+    
+
+    
+    func addAnnotationForLilypad(lily: Lilypad) {
+        let a = MGLPointAnnotation()
+        a.coordinate = CLLocationCoordinate2D(latitude: lily.latitude, longitude: lily.longitude)
+        a.title = lily.title
+        mapView.addAnnotation(a)
+    }
+    
+    func fetchLilypads() {
+        DatabaseManager.getLilypadInfo { (info) in
+            if let info = info {
+                DatabaseManager.getLilypads(info: info) { (gotLilys) in
+                    if gotLilys {
+                        self.loadingIndiator.stopAnimating()
+                        DispatchQueue.main.async {
+                            for lily in System.lilypads {
+                                self.addAnnotationForLilypad(lily: lily)
+                            }
+                        }
+                    } else {
+                        fatalError()
+                    }
+                }
+            } else {
+                fatalError()
+            }
+        }
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            loadingIndiator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingIndiator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loadingIndiator.widthAnchor.constraint(equalToConstant: 50),
+            loadingIndiator.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     
@@ -140,23 +193,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func zoomInOnUser() {
         if let location = locationManager.location?.coordinate {
-            let region  = MKCoordinateRegion.init(center: location, latitudinalMeters: Constants.mapdist, longitudinalMeters: Constants.mapdist)
-            mapView.setRegion(region, animated: true)
+            mapView.setCenter(CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), zoomLevel: 10, animated: false)
+            System.currentLocation = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        } else {
+            mapView.setCenter(CLLocationCoordinate2D(latitude: 40.781049, longitude: -73.966727), animated: false)
         }
     }
     
     
-    
-    
-    
-    
+    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        return true
+    }
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: Constants.mapdist, longitudinalMeters: Constants.mapdist)
-        mapView.setRegion(region, animated: true)
+        mapView.setCenter(center, animated: true)
+        System.currentLocation = center
     }
     
     
@@ -165,24 +219,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
 
     
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        let identifier = "annotationid"
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-//        if annotationView == nil {
-//            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-////            annotationView?.image = UIImage(named: "test")
-//            let img = UIImage(named: "test")
-//            let size = CGSize(width: 50, height: 50)
-//            UIGraphicsBeginImageContext(size)
-//            img?.draw(in: CGRect(x: 0, y: 0, width: 50, height: 50))
-//            let resized = UIGraphicsGetImageFromCurrentImageContext()
-//            annotationView?.image = resized
-//            annotationView?.canShowCallout = true
-//        } else {
-//            annotationView?.annotation = annotation
-//        }
-//        print("done")
-//        return annotationView
-//    }
 
 }

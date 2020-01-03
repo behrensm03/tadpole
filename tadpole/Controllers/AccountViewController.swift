@@ -17,35 +17,34 @@ class AccountViewController: UIViewController {
     var splashPowerLabel: UILabel!
     var userImg: UIImageView!
     var splashPowerProgressBarBackgroundView: UIView!
-//    var splashPowerProgressBarView: UIView!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
         
 
         // Do any additional setup after loading the view.
         
         self.navigationItem.title = "account"
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
+        view.backgroundColor = Colors.darkGray
         
         self.navigationController!.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: Colors.main,
-             NSAttributedString.Key.font: UIFont(name: "Comfortaa-Bold", size: 30) ?? UIFont.systemFont(ofSize: 30, weight: .bold)]
+             NSAttributedString.Key.font: UIFont(name: "Comfortaa-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24, weight: .bold)]
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
         
         
-        signOutButton = UIButton()
-        signOutButton.translatesAutoresizingMaskIntoConstraints = false
-        signOutButton.setTitle("Sign out", for: .normal)
-        signOutButton.setTitleColor(.white, for: .normal)
-        signOutButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        signOutButton.backgroundColor = Colors.main
-        signOutButton.layer.cornerRadius = 25
-        signOutButton.layer.shadowColor = UIColor.gray.cgColor
-        signOutButton.layer.shadowOffset = CGSize(width: 5, height: 7)
-        signOutButton.layer.shadowOpacity = 0.8
-        signOutButton.layer.masksToBounds = false
+        signOutButton = Constants.defaultButtonStyle(title: "Sign out")
         signOutButton.addTarget(self, action: #selector(signOut), for: .touchUpInside)
         view.addSubview(signOutButton)
         
@@ -115,8 +114,8 @@ class AccountViewController: UIViewController {
         NSLayoutConstraint.activate([
             signOutButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             signOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signOutButton.heightAnchor.constraint(equalToConstant: 50),
-            signOutButton.widthAnchor.constraint(equalToConstant: 250)
+            signOutButton.heightAnchor.constraint(equalToConstant: Constants.defaultButtonHeight),
+            signOutButton.widthAnchor.constraint(equalToConstant: Constants.defaultButtonWidth)
             ])
         
         NSLayoutConstraint.activate([
