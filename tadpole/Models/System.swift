@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class System {
     static var currentUser: String?
@@ -14,5 +15,7 @@ class System {
     static var splashPower: Int?
     
     static var lilypads = [Lilypad]()
+    
+    static var currentLocation: CLLocationCoordinate2D?
 
 }
