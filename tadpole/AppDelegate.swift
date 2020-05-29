@@ -22,8 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         FirebaseApp.configure()
-        let tabBarController = TadpoleTabBarController()
-        window?.rootViewController = tabBarController
+        
+        
+//        let tabBarController = TadpoleTabBarController()
+//        window?.rootViewController = tabBarController
+        let vc = ViewControllerv2()
+        let nc = MapNavigationController(rootViewController: vc)
+        window?.rootViewController = nc
+        
         window?.makeKeyAndVisible()
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -90,18 +96,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let signedInRef = DatabaseManager.usersRef.child(username)
         
         signedInRef.observe(.value) { snapshot in
-            let alreadyExists = snapshot.hasChild("splashPower")
+            print(snapshot)
+            let alreadyExists = snapshot.hasChild("username")
             if (alreadyExists) {
                 signedInRef.updateChildValues(["username":username, "name":name])
             } else {
                 signedInRef.setValue(signedInUser.toDict())
             }
-            
-            let splashPowerRef = signedInRef.child("splashPower")
-            splashPowerRef.observe(.value, with: { spSnapshot in
-                UserDefaults.standard.set(spSnapshot.value, forKey: "splashPower")
-                System.splashPower = spSnapshot.value as! Int?
-            })
+
+//            let splashPowerRef = signedInRef.child("splashPower")
+//            splashPowerRef.observe(.value, with: { spSnapshot in
+//                UserDefaults.standard.set(spSnapshot.value, forKey: "splashPower")
+//                System.splashPower = spSnapshot.value as! Int?
+//            })
         }
         
     }

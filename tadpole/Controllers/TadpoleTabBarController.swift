@@ -18,12 +18,6 @@ class TadpoleTabBarController: UITabBarController {
 
         // Do any additional setup after loading the view.
         
-        class MapNavigationController: UINavigationController {
-            override var preferredStatusBarStyle: UIStatusBarStyle {
-                return .lightContent
-            }
-        }
-        
         
         let accountViewController = AccountViewController()
         let accountNavigationController = MapNavigationController(rootViewController: accountViewController)

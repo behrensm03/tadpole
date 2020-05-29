@@ -21,6 +21,7 @@ class Constants {
     static let cellSpacing: CGFloat = 25
     static let browseCellSpacing: CGFloat = 5
     static let userImgDimension: CGFloat = 50
+    static let commentImageViewDimension: CGFloat = 50
     
     static let defaultButtonWidth: CGFloat = 250
     static let defaultButtonHeight: CGFloat = 50
@@ -28,6 +29,14 @@ class Constants {
     static let splashPowerProgressBarHeight: CGFloat = 20
     
     
+    static let defaultLabelHeight: CGFloat = 50
+    static let slimLabelHeight: CGFloat = 20
+    
+    static let smallButtonHeight: CGFloat = 25
+    static let smallButtonWidth: CGFloat = 100
+    
+    
+    static let smallIconDimension: CGFloat = 25
     
     
     static let maxLilypadSubtitleLength = 119
@@ -40,7 +49,7 @@ class Constants {
         b.translatesAutoresizingMaskIntoConstraints = false
         b.setTitle(title, for: .normal)
         b.setTitleColor(.white, for: .normal)
-        b.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        b.titleLabel?.font = UIFont(name: "Comfortaa-Bold", size: 20)
         b.backgroundColor = Colors.main
         b.layer.cornerRadius = 25
         b.layer.shadowColor = UIColor.gray.cgColor
@@ -50,14 +59,19 @@ class Constants {
         return b
     }
     
-    static func buttonNoShadow(title: String) -> UIButton {
+    static func buttonNoShadow(title: String, isLargeSize: Bool) -> UIButton {
         let b = UIButton()
         b.translatesAutoresizingMaskIntoConstraints = false
         b.setTitle(title, for: .normal)
         b.setTitleColor(.white, for: .normal)
-        b.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         b.backgroundColor = Colors.main
-        b.layer.cornerRadius = 25
+        if isLargeSize {
+            b.titleLabel?.font = UIFont(name: "Comfortaa-Bold", size: 20)
+            b.layer.cornerRadius = defaultButtonHeight / 2
+        } else {
+            b.titleLabel?.font = UIFont(name: "Comfortaa-Regular", size: 15)
+            b.layer.cornerRadius = smallButtonHeight / 2
+        }
         b.layer.masksToBounds = false
         return b
     }

@@ -38,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         view.addSubview(mapView)
         
         checkLocationServices()
-        addAnnotations()
+//        addAnnotations()
         
 //        addMarker(mapView: mapView)
     }
@@ -142,6 +142,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if let location = locationManager.location?.coordinate {
             let region  = MKCoordinateRegion.init(center: location, latitudinalMeters: Constants.mapdist, longitudinalMeters: Constants.mapdist)
             mapView.setRegion(region, animated: true)
+            print("Should have zoomed")
         }
     }
     

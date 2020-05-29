@@ -43,9 +43,9 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftBarButtonItem?.tintColor = Colors.main
 
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
-        self.navigationItem.rightBarButtonItem = saveButton
-        self.navigationItem.rightBarButtonItem?.tintColor = Colors.main
+//        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+//        self.navigationItem.rightBarButtonItem = saveButton
+//        self.navigationItem.rightBarButtonItem?.tintColor = Colors.main
         
         setupNextButton()
         
@@ -66,14 +66,15 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
     }
     
     func setupNextButton() {
-        nextButton = Constants.buttonNoShadow(title: "next")
+        nextButton = Constants.buttonNoShadow(title: "next", isLargeSize: true)
         nextButton.addTarget(self, action: #selector(handleNextPress), for: .touchUpInside)
         view.addSubview(nextButton)
     }
     
     func submitNewLilypad() {
-        let lily = Lilypad(title: titleField.text!, subtitle: subtitleView.text!, poster: System.currentUser!, latitude: System.currentLocation!.latitude, longitude: System.currentLocation!.longitude)
-        DatabaseManager.addLilypad(lily: lily)
+        let lily = Lilypad(title: titleField.text!, subtitle: subtitleView.text!, poster: System.currentUser!, latitude: System.currentLocation!.latitude, longitude: System.currentLocation!.longitude, numCheckins: 0)
+//        DatabaseManager.addLilypad(lily: lily)
+        DatabaseManager.addLilypadForZone(lily: lily)
     }
     
     

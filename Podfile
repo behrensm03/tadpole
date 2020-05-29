@@ -12,5 +12,6 @@ target 'tadpole' do
   pod 'Firebase/Database'
   pod 'Firebase'
   pod 'GoogleSignIn'
+  pod 'NVActivityIndicatorView'
 
 end

@@ -16,14 +16,17 @@ class Lilypad: Codable {
     var poster: String
     var latitude: Double
     var longitude: Double
+    var numCheckins: Int
+
     
 
-    init(title: String, subtitle: String, poster: String, latitude: Double, longitude: Double) {
+    init(title: String, subtitle: String, poster: String, latitude: Double, longitude: Double, numCheckins: Int) {
         self.title = title
         self.subtitle = subtitle
         self.poster = poster
         self.latitude = latitude
         self.longitude = longitude
+        self.numCheckins = numCheckins
     }
     
     init(dict: [String:String]) {
@@ -32,6 +35,7 @@ class Lilypad: Codable {
         self.poster = dict["poster"]!
         self.latitude = Double(dict["latitude"]!)!
         self.longitude = Double(dict["longitude"]!)!
+        self.numCheckins = Int(dict["numCheckins"]!)!
     }
     
     init(dict: [String:Any]) {
@@ -40,6 +44,7 @@ class Lilypad: Codable {
         self.poster = dict["poster"] as! String
         self.latitude = dict["latitude"] as! Double
         self.longitude = dict["longitude"] as! Double
+        self.numCheckins = dict["numCheckins"] as! Int
     }
     
     
@@ -60,14 +65,19 @@ class Lilypad: Codable {
             "subtitle" : subtitle,
             "poster" : poster,
             "latitude" : latitude,
-            "longitude" : longitude
+            "longitude" : longitude,
+            "numCheckins" : numCheckins
         ]
         return dict
     }
     
     func toString() -> String {
-        let s = "Title: " + title + ", Subtitle: " + subtitle + ", poster: " + poster + ", latitude: " + String(latitude) + ", longitude: " + String(longitude)
+        let s = "Title: \(title), Subtitle: \(subtitle), poster: \(poster), latitude: \(latitude), longitude: \(longitude), numCheckins: \(numCheckins)"
         return s
+    }
+    
+    func equals(lily2: Lilypad) -> Bool {
+        return (self.title == lily2.title) && (self.latitude == lily2.latitude) && (self.longitude == lily2.longitude)
     }
     
 }

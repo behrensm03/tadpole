@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		123D345B23676B8C00B9BE6E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D345A23676B8C00B9BE6E /* Comment.swift */; };
+		123D345D2367973D00B9BE6E /* AddLilypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D345C2367973D00B9BE6E /* AddLilypadViewController.swift */; };
+		1249DA0823C062430094AFC4 /* LilypadAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1249DA0723C062430094AFC4 /* LilypadAnnotation.swift */; };
+		1249DA0F23C10A1C0094AFC4 /* LilypadCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1249DA0E23C10A1C0094AFC4 /* LilypadCalloutView.swift */; };
 		125604BC22EA81E700068D8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 125604BB22EA81E700068D8B /* GoogleService-Info.plist */; };
-		125C9AE622E7F45700533885 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125C9AE522E7F45700533885 /* BrowseViewController.swift */; };
 		125DBF0922E9302B00231E3B /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125DBF0822E9302B00231E3B /* SignInSignUpViewController.swift */; };
+		126656C8247B168800069FE0 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126656C7247B168800069FE0 /* CommentCollectionViewCell.swift */; };
 		127C1B9022FCF953001564A5 /* Lilypad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C1B8F22FCF952001564A5 /* Lilypad.swift */; };
-		127CF1C5232AC74D006E897F /* LilypadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127CF1C4232AC74D006E897F /* LilypadCollectionViewCell.swift */; };
 		1280789222F2777F0098A9BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1280789122F2777F0098A9BE /* User.swift */; };
+		128385E923AF393900267937 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128385E823AF393900267937 /* Mapbox.framework */; };
+		128385EA23AF393900267937 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128385E823AF393900267937 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128385EE23AF3A0300267937 /* ViewControllerv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128385ED23AF3A0300267937 /* ViewControllerv2.swift */; };
 		12BAC8C422E9391E00A7834E /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAC8C322E9391E00A7834E /* System.swift */; };
+		12C48F66246FAAAD0051DB58 /* TadpoleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C48F65246FAAAD0051DB58 /* TadpoleDetailView.swift */; };
+		12CBDA302479B4EC00EF35E9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */; };
+		12D2B08E245A8C2100F4B34E /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2B08D245A8C2100F4B34E /* Zone.swift */; };
+		12D2B090245A8C5300F4B34E /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2B08F245A8C5300F4B34E /* Constraint.swift */; };
 		12DFFED822EA9406009617B7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DFFED722EA9406009617B7 /* DatabaseManager.swift */; };
+		12E31F40247D7D9F00D068FB /* MapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E31F3F247D7D9F00D068FB /* MapNavigationController.swift */; };
 		12EED2AC22D80D6D00985BBE /* Comfortaa in Resources */ = {isa = PBXBuildFile; fileRef = 12EED2AB22D80D6D00985BBE /* Comfortaa */; };
 		12EED2AE22D80DEF00985BBE /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12EED2AD22D80DEF00985BBE /* Comfortaa-Light.ttf */; };
 		12EED2B022D80DF700985BBE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12EED2AF22D80DF700985BBE /* Comfortaa-Regular.ttf */; };
@@ -23,7 +34,6 @@
 		12EED2B622D81C9300985BBE /* TadpoleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EED2B522D81C9300985BBE /* TadpoleTabBarController.swift */; };
 		12EED2B822D81EAC00985BBE /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EED2B722D81EAC00985BBE /* AccountViewController.swift */; };
 		12F2455D22D6EAD900282FE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2455C22D6EAD900282FE6 /* AppDelegate.swift */; };
-		12F2455F22D6EAD900282FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F2455E22D6EAD900282FE6 /* ViewController.swift */; };
 		12F2456222D6EAD900282FE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12F2456022D6EAD900282FE6 /* Main.storyboard */; };
 		12F2456422D6EADA00282FE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12F2456322D6EADA00282FE6 /* Assets.xcassets */; };
 		12F2456722D6EADA00282FE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12F2456522D6EADA00282FE6 /* LaunchScreen.storyboard */; };
@@ -31,15 +41,39 @@
 		9E5C868BD9F7EEA2740E2174 /* Pods_tadpole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CDBF8EDE7571C2A27137A43 /* Pods_tadpole.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		128385EB23AF393900267937 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				128385EA23AF393900267937 /* Mapbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		123D345A23676B8C00B9BE6E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		123D345C2367973D00B9BE6E /* AddLilypadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLilypadViewController.swift; sourceTree = "<group>"; };
+		1249DA0723C062430094AFC4 /* LilypadAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilypadAnnotation.swift; sourceTree = "<group>"; };
+		1249DA0E23C10A1C0094AFC4 /* LilypadCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilypadCalloutView.swift; sourceTree = "<group>"; };
 		125604BB22EA81E700068D8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		125C9AE522E7F45700533885 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		125DBF0822E9302B00231E3B /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
+		126656C7247B168800069FE0 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		127C1B8F22FCF952001564A5 /* Lilypad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lilypad.swift; sourceTree = "<group>"; };
-		127CF1C4232AC74D006E897F /* LilypadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LilypadCollectionViewCell.swift; sourceTree = "<group>"; };
 		1280789122F2777F0098A9BE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		128385E823AF393900267937 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "../../Downloads/mapbox-ios-sdk-5.6.0-dynamic/dynamic/Mapbox.framework"; sourceTree = "<group>"; };
+		128385ED23AF3A0300267937 /* ViewControllerv2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerv2.swift; sourceTree = "<group>"; };
 		12BAC8C322E9391E00A7834E /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		12C48F65246FAAAD0051DB58 /* TadpoleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TadpoleDetailView.swift; path = tadpole/Models/TadpoleDetailView.swift; sourceTree = SOURCE_ROOT; };
+		12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = tadpole/Cells/CommentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		12D2B08D245A8C2100F4B34E /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		12D2B08F245A8C5300F4B34E /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		12DFFED722EA9406009617B7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		12E31F3F247D7D9F00D068FB /* MapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationController.swift; sourceTree = "<group>"; };
 		12EED2AB22D80D6D00985BBE /* Comfortaa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Comfortaa; sourceTree = "<group>"; };
 		12EED2AD22D80DEF00985BBE /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		12EED2AF22D80DF700985BBE /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -49,7 +83,6 @@
 		12EED2B722D81EAC00985BBE /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		12F2455922D6EAD900282FE6 /* tadpole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tadpole.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12F2455C22D6EAD900282FE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		12F2455E22D6EAD900282FE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		12F2456122D6EAD900282FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12F2456322D6EADA00282FE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12F2456622D6EADA00282FE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,16 +99,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E5C868BD9F7EEA2740E2174 /* Pods_tadpole.framework in Frameworks */,
+				128385E923AF393900267937 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1249DA0923C109790094AFC4 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				1249DA0723C062430094AFC4 /* LilypadAnnotation.swift */,
+				1249DA0E23C10A1C0094AFC4 /* LilypadCalloutView.swift */,
+			);
+			path = Subclasses;
+			sourceTree = "<group>";
+		};
 		127CF1C3232AC6F5006E897F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				127CF1C4232AC74D006E897F /* LilypadCollectionViewCell.swift */,
+				12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */,
+				126656C7247B168800069FE0 /* CommentCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -84,10 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				12EED2B722D81EAC00985BBE /* AccountViewController.swift */,
-				125C9AE522E7F45700533885 /* BrowseViewController.swift */,
+				123D345C2367973D00B9BE6E /* AddLilypadViewController.swift */,
 				125DBF0822E9302B00231E3B /* SignInSignUpViewController.swift */,
 				12EED2B522D81C9300985BBE /* TadpoleTabBarController.swift */,
-				12F2455E22D6EAD900282FE6 /* ViewController.swift */,
+				12E31F3F247D7D9F00D068FB /* MapNavigationController.swift */,
+				128385ED23AF3A0300267937 /* ViewControllerv2.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -95,10 +140,14 @@
 		12DFFED622EA939D009617B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				12C48F65246FAAAD0051DB58 /* TadpoleDetailView.swift */,
 				12BAC8C322E9391E00A7834E /* System.swift */,
 				12F2456E22D6EAE900282FE6 /* Colors.swift */,
 				12EED2B322D8192C00985BBE /* Constants.swift */,
 				127C1B8F22FCF952001564A5 /* Lilypad.swift */,
+				123D345A23676B8C00B9BE6E /* Comment.swift */,
+				12D2B08D245A8C2100F4B34E /* Zone.swift */,
+				12D2B08F245A8C5300F4B34E /* Constraint.swift */,
 				1280789122F2777F0098A9BE /* User.swift */,
 			);
 			path = Models;
@@ -128,6 +177,7 @@
 		12F2455B22D6EAD900282FE6 /* tadpole */ = {
 			isa = PBXGroup;
 			children = (
+				1249DA0923C109790094AFC4 /* Subclasses */,
 				127CF1C3232AC6F5006E897F /* Cells */,
 				12DFFED622EA939D009617B7 /* Models */,
 				12DFFED522EA9349009617B7 /* Controllers */,
@@ -146,6 +196,7 @@
 		6B1E7E5F41EBAB0E2E671B14 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				128385E823AF393900267937 /* Mapbox.framework */,
 				3CDBF8EDE7571C2A27137A43 /* Pods_tadpole.framework */,
 			);
 			name = Frameworks;
@@ -173,6 +224,8 @@
 				12F2455722D6EAD900282FE6 /* Resources */,
 				B7D4747D9A717061660C4557 /* [CP] Embed Pods Frameworks */,
 				8998FA471FB3712F28CB3E58 /* [CP] Copy Pods Resources */,
+				128385EB23AF393900267937 /* Embed Frameworks */,
+				128385EC23AF396900267937 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -235,6 +288,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		128385EC23AF396900267937 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"\n";
+		};
 		7B62E2C3AF63910434C590EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +363,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
 				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -305,6 +376,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -320,18 +392,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1249DA0823C062430094AFC4 /* LilypadAnnotation.swift in Sources */,
+				12C48F66246FAAAD0051DB58 /* TadpoleDetailView.swift in Sources */,
 				125DBF0922E9302B00231E3B /* SignInSignUpViewController.swift in Sources */,
-				12F2455F22D6EAD900282FE6 /* ViewController.swift in Sources */,
+				12CBDA302479B4EC00EF35E9 /* CommentTableViewCell.swift in Sources */,
+				1249DA0F23C10A1C0094AFC4 /* LilypadCalloutView.swift in Sources */,
 				12DFFED822EA9406009617B7 /* DatabaseManager.swift in Sources */,
+				123D345B23676B8C00B9BE6E /* Comment.swift in Sources */,
+				123D345D2367973D00B9BE6E /* AddLilypadViewController.swift in Sources */,
 				12F2456F22D6EAE900282FE6 /* Colors.swift in Sources */,
+				12D2B090245A8C5300F4B34E /* Constraint.swift in Sources */,
 				12EED2B822D81EAC00985BBE /* AccountViewController.swift in Sources */,
-				127CF1C5232AC74D006E897F /* LilypadCollectionViewCell.swift in Sources */,
+				128385EE23AF3A0300267937 /* ViewControllerv2.swift in Sources */,
+				126656C8247B168800069FE0 /* CommentCollectionViewCell.swift in Sources */,
 				12F2455D22D6EAD900282FE6 /* AppDelegate.swift in Sources */,
+				12E31F40247D7D9F00D068FB /* MapNavigationController.swift in Sources */,
 				12EED2B622D81C9300985BBE /* TadpoleTabBarController.swift in Sources */,
 				127C1B9022FCF953001564A5 /* Lilypad.swift in Sources */,
 				12EED2B422D8192C00985BBE /* Constants.swift in Sources */,
 				12BAC8C422E9391E00A7834E /* System.swift in Sources */,
-				125C9AE622E7F45700533885 /* BrowseViewController.swift in Sources */,
+				12D2B08E245A8C2100F4B34E /* Zone.swift in Sources */,
 				1280789222F2777F0098A9BE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

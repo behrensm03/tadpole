@@ -22,4 +22,8 @@ class Comment {
         self.body = dict["body"] as! String
         self.poster = dict["poster"] as! String
     }
+    
+    func toString() -> String {
+        return "poster: \(self.poster), body: \(self.body)"
+    }
 }
