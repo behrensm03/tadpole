@@ -201,7 +201,29 @@ class DatabaseManager {
     }
     
     
-    
+    static func updateCheckinsForLilypad(increase: Bool) {
+        if let id = System.activeLilypadId, let z = currentZoneRef {
+            let r = z.child(id)
+            r.runTransactionBlock({ (data) -> TransactionResult in
+                if var d = data.value as? [String: Any] {
+                    if var num = d["numCheckins"] as? Int {
+                        if increase {
+                            num += 1
+                        } else {
+                            num -= 1
+                        }
+                        d["numCheckins"] = num
+                        data.value = d
+                    }
+                }
+                return TransactionResult.success(withValue: data)
+            }) { (error, commited, snapshot) in
+                if let e = error {
+                    print(e.localizedDescription)
+                }
+            }
+        }
+    }
     
     
     

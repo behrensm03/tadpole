@@ -224,7 +224,9 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 self.buttonWidthConstraint.constant = 50
                 self.checkinButton.layoutIfNeeded()
             }) { (complete) in
-                print(complete)
+                print("adding checkin")
+                DatabaseManager.updateCheckinsForLilypad(increase: true)
+                // MARK: update the number of checkins - do we reload the comment or just increment and wait till it appears again to reload everything
             }
         } else {
             self.checkinButton.setTitle("check in", for: .normal)
@@ -232,7 +234,9 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 self.buttonWidthConstraint.constant = 100
                 self.checkinButton.layoutIfNeeded()
             }) { (complete) in
-                print(complete)
+                print("removing checkin")
+                // MARK: check if this works - havent tested
+                DatabaseManager.updateCheckinsForLilypad(increase: false)
             }
         }
     }
@@ -818,45 +822,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationPermission()
     }
-
-//    func mapView(_ mapView: MGLMapView, didSelect annotationView: MGLAnnotationView) {
-//        print("tapped")
-//    }
-    
-//    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-//        if let a = annotation as? LilypadAnnotation {
-////            if (a.willUseImage) {
-////                print("annotation view is nil")
-////                return nil
-////            }
-//            
-////            guard annotation is LilypadAnnotation else { return nil }
-//
-//            let reuse = "reusableLocation"
-//            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuse)
-//
-//            if annotationView == nil {
-//                annotationView = MGLAnnotationView(annotation: a, reuseIdentifier: reuse)
-//                annotationView?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//                annotationView?.layer.cornerRadius = (annotationView?.frame.size.width)! / 2
-//                annotationView?.layer.borderWidth = 4.0
-//                annotationView?.layer.borderColor = UIColor.white.cgColor
-//                annotationView!.backgroundColor = UIColor.clear
-//            } else {
-//                annotationView?.annotation = a
-//            }
-//
-//
-//
-//            return annotationView
-//
-//        } else {
-//            return nil
-//        }
-//
-//
-//
-//    }
     
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
