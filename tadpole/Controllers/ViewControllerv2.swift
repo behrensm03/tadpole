@@ -226,6 +226,7 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
             }) { (complete) in
                 print("adding checkin")
                 DatabaseManager.updateCheckinsForLilypad(increase: true)
+                self.changeNumCheckinsLabelByOne(isIncrementing: true)
                 // MARK: update the number of checkins - do we reload the comment or just increment and wait till it appears again to reload everything
             }
         } else {
@@ -237,7 +238,17 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 print("removing checkin")
                 // MARK: check if this works - havent tested
                 DatabaseManager.updateCheckinsForLilypad(increase: false)
+                self.changeNumCheckinsLabelByOne(isIncrementing: false)
             }
+        }
+    }
+    
+    func changeNumCheckinsLabelByOne(isIncrementing: Bool) {
+        let i = Int(self.tpDetailView.checkinsLabel.text!)
+        if isIncrementing {
+            self.tpDetailView.checkinsLabel.text = String(i!+1)
+        } else {
+            self.tpDetailView.checkinsLabel.text = String(i! - 1)
         }
     }
     
