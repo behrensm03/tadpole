@@ -14,19 +14,17 @@ enum constraintType {
 
 class Constraint {
 
-    var isGreaterThan: Bool //
+    var isGreaterThan: Bool
     var b: Double
     var m: Double
-//    var a: Double
     // Constraints are of the format:
-    // aY >= mX + b
-    // aY <= mX + b
+    // Y >= mX + b
+    // Y <= mX + b
     
     init(isGreaterThan: Bool, m: Double, b: Double) {
         self.isGreaterThan = isGreaterThan
         self.m = m
         self.b = b
-//        self.a = a
     }
     
     init(isGreater: Bool, p1: (Double, Double), p2: (Double, Double)) {
@@ -49,15 +47,16 @@ class Constraint {
         }
     }
     
+    
     func isSatisfiedAtPoint(p: (Double, Double)) -> Bool {
         return isSatisfiedAtPoint(x: p.0, y: p.1)
     }
     
     func toString() -> String {
         if isGreaterThan {
-            return "y >= " + String(m) + "x + " + String(b)
+            return "y >= \(m) x + \(b)"
         }
-            return "y <= " + String(m) + "x + " + String(b)
+            return "y <= \(m) + x + \(b)"
     }
     
     

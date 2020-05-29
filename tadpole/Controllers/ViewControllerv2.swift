@@ -15,22 +15,29 @@ import NVActivityIndicatorView
 
 
 class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate {
-    //MKMapViewDelegate
     
-    // Views and variables
-    
-    
+    // Map and Location
     var mapView: MGLMapView!
     let locationManager = CLLocationManager()
+    
+    
+    // Loading
     let loadingIndiator = NVActivityIndicatorView(frame: .zero, type: .circleStrokeSpin, color: Colors.main)
+    
+    
+    // Top of screen Buttons
     var newLilypadButton: UIBarButtonItem!
     var accountButton: UIBarButtonItem!
     
+    
+    // Popup when not in a pond and trying to post
     var popupView: UIView!
     var titleLabel: UILabel!
     var body: UILabel!
     var dismissButtonNoZone: UIButton!
     
+    
+    // Detail view for lilypad
     var tpDetailView: TadpoleDetailView!
     var detailView: UIView!
     var dismissButtonDetailView: UIButton!
@@ -38,10 +45,10 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
     var checkinButton: UIButton!
     var buttonWidth = Constants.smallButtonWidth
     var buttonWidthConstraint: NSLayoutConstraint!
-    
-//    var tpTableView: UITableView!
     var tpCollectionView: UICollectionView!
     var reuse = "reusetable"
+    
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -96,9 +103,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         setupConstraints()
         view.bringSubviewToFront(loadingIndiator)
         loadingIndiator.startAnimating()
-//        fetchLilypads()
-//        fetchLilypadsForZone()
-//        fetchZoneLilys()
 
         let retrieval = DispatchGroup()
         retrieval.enter()
@@ -107,9 +111,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         retrieval.notify(queue: .main) {
             self.fetchLilypadsForZone()
         }
-        
-        
-        
         
         
     }
@@ -127,7 +128,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         detailViewPosterLabel = tpDetailView.posterLabel
         detailView.isHidden = true
         view.addSubview(detailView)
-//        tpTableView = tpDetailView.commentsTableView
         tpCollectionView = tpDetailView.commentsCollectionView
         
         
@@ -146,9 +146,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         detailView.addSubview(checkinButton)
         checkinButton.addTarget(self, action: #selector(tappedCheckinButton), for: .touchUpInside)
         dismissButtonDetailView.addTarget(self, action: #selector(animateDetailViewOut), for: .touchUpInside)
-//        tpTableView.dataSource = self
-//        tpTableView.delegate = self
-//        detailView.addSubview(tpTableView)
         tpCollectionView.dataSource = self
         tpCollectionView.delegate = self
         detailView.addSubview(tpCollectionView)
@@ -203,21 +200,13 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
             ch.bottomAnchor.constraint(equalTo: icon.bottomAnchor)
         ])
         
-        buttonWidthConstraint = NSLayoutConstraint(item: checkinButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: buttonWidth)
+        buttonWidthConstraint = NSLayoutConstraint(item: checkinButton as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: buttonWidth)
         NSLayoutConstraint.activate([
             checkinButton.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: Constants.verticalPadding),
             checkinButton.leadingAnchor.constraint(equalTo: icon.leadingAnchor),
             checkinButton.heightAnchor.constraint(equalToConstant: Constants.smallButtonHeight),
-//            checkinButton.widthAnchor.constraint(equalToConstant: buttonWidth)
             buttonWidthConstraint
         ])
-        
-//        NSLayoutConstraint.activate([
-//            tpTableView.topAnchor.constraint(equalTo: sub.bottomAnchor),
-//            tpTableView.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
-//            tpTableView.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
-//            tpTableView.bottomAnchor.constraint(equalTo: dismissButtonDetailView.topAnchor)
-//        ])
         
         NSLayoutConstraint.activate([
             tpCollectionView.topAnchor.constraint(equalTo: checkinButton.bottomAnchor, constant: Constants.verticalPadding),
@@ -326,7 +315,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 print("done animating")
                 if v == self.detailView {
                     print("animating the detail view so reloading collectionview")
-//                    self.tpTableView.reloadData()
                     self.tpCollectionView.reloadData()
                 }
             }
@@ -636,12 +624,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
             animateViewIn(v: self.popupView)
         }
     }
-    
-    
-    
-    func presentThreadViewController() {
-        
-    }
 
     
     func addAnnotationForLilypad(lily: Lilypad) {
@@ -739,8 +721,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 GIDSignIn.sharedInstance()?.signInSilently()
                 System.currentUser = UserDefaults.standard.string(forKey: "username")
                 System.name = UserDefaults.standard.string(forKey: "name")
-                System.splashPower = UserDefaults.standard.integer(forKey: "splashPower")
-//                System.splashPower = Int(UserDefaults.standard.string(forKey: "splashPower")!)
             }
         }
         else {
@@ -961,37 +941,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
 
 
 }
-
-
-
-//extension ViewControllerv2: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("selected " + System.activeLilypadComments[indexPath.row].toString())
-//        return
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
-//
-//}
-//
-//extension ViewControllerv2: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return System.activeLilypadComments.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: tpDetailView.reuse, for: indexPath) as! CommentTableViewCell
-//        let comment = System.activeLilypadComments[indexPath.row]
-//        cell.configure(for: comment)
-//        print("configuring for " + comment.toString())
-//        return cell
-//    }
-//
-//}
 
 
 extension ViewControllerv2: UICollectionViewDataSource {

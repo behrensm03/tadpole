@@ -13,32 +13,36 @@ class Constants {
     
     
     static let mapdist: Double = 10000
+    
+    // Padding
     static let verticalPadding: CGFloat = 10
-    static let imgViewDimension: CGFloat = 100
     static let horizontalPadding: CGFloat = 25
     static let minPadding: CGFloat = 5
-    static let loadingScreenLogoDimension: CGFloat = 200
-    static let cellSpacing: CGFloat = 25
-    static let browseCellSpacing: CGFloat = 5
+    
+    
+    // Image and Icon dimensions
+    static let imgViewDimension: CGFloat = 100
     static let userImgDimension: CGFloat = 50
     static let commentImageViewDimension: CGFloat = 50
+    static let loadingScreenLogoDimension: CGFloat = 200
+    static let smallIconDimension: CGFloat = 25
     
+    // Cell Spacing
+    static let cellSpacing: CGFloat = 25
+    static let browseCellSpacing: CGFloat = 5
+    
+    
+    // Button sizing
     static let defaultButtonWidth: CGFloat = 250
     static let defaultButtonHeight: CGFloat = 50
-    
-    static let splashPowerProgressBarHeight: CGFloat = 20
-    
-    
-    static let defaultLabelHeight: CGFloat = 50
-    static let slimLabelHeight: CGFloat = 20
-    
     static let smallButtonHeight: CGFloat = 25
     static let smallButtonWidth: CGFloat = 100
     
+    // Label sizing
+    static let defaultLabelHeight: CGFloat = 50
+    static let slimLabelHeight: CGFloat = 20
     
-    static let smallIconDimension: CGFloat = 25
-    
-    
+    // Text length
     static let maxLilypadSubtitleLength = 119
     static let maxLilypadTitleLength = 21
     

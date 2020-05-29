@@ -26,4 +26,5 @@ class Comment {
     func toString() -> String {
         return "poster: \(self.poster), body: \(self.body)"
     }
+    
 }

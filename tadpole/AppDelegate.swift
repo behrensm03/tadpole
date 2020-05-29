@@ -23,9 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         FirebaseApp.configure()
         
-        
-//        let tabBarController = TadpoleTabBarController()
-//        window?.rootViewController = tabBarController
         let vc = ViewControllerv2()
         let nc = MapNavigationController(rootViewController: vc)
         window?.rootViewController = nc
@@ -36,15 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //GIDSignIn.sharedInstance().clientID = "287699874657-3av6nauopcat31go3qt3v8u52sft63mi.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         
-        
-        
-//        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
-//            DispatchQueue.main.async {
-//                GIDSignIn.sharedInstance()?.signInSilently()
-//            }
-//        } else {
-//            window?.rootViewController = SignInSignUpViewController()
-//        }
         
         return true
     }
@@ -99,16 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print(snapshot)
             let alreadyExists = snapshot.hasChild("username")
             if (alreadyExists) {
-                signedInRef.updateChildValues(["username":username, "name":name])
+                signedInRef.updateChildValues(["username":username, "name":name as Any])
             } else {
                 signedInRef.setValue(signedInUser.toDict())
             }
-
-//            let splashPowerRef = signedInRef.child("splashPower")
-//            splashPowerRef.observe(.value, with: { spSnapshot in
-//                UserDefaults.standard.set(spSnapshot.value, forKey: "splashPower")
-//                System.splashPower = spSnapshot.value as! Int?
-//            })
         }
         
     }
@@ -123,7 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//        return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
         return GIDSignIn.sharedInstance().handle(url as URL?,
                                                  sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation]
         )

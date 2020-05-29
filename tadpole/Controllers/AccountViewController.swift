@@ -14,9 +14,7 @@ class AccountViewController: UIViewController {
     
     var signOutButton: UIButton!
     var accountEmailLabel: UILabel!
-//    var splashPowerLabel: UILabel!
     var userImg: UIImageView!
-//    var splashPowerProgressBarBackgroundView: UIView!
     var currentZoneLabel: UILabel!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -27,13 +25,8 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
-        
-
-        // Do any additional setup after loading the view.
         
         self.navigationItem.title = "account"
-//        view.backgroundColor = .white
         view.backgroundColor = Colors.darkGray
         
         self.navigationController!.navigationBar.titleTextAttributes =
@@ -60,32 +53,12 @@ class AccountViewController: UIViewController {
         
         
         
-        
-//        splashPowerLabel = UILabel()
-//        splashPowerLabel.translatesAutoresizingMaskIntoConstraints = false
-//        splashPowerLabel.font = UIFont(name: "Comfortaa-Regular", size: 20)
-//        splashPowerLabel.textColor = Colors.main
-//        splashPowerLabel.textAlignment = .center
-//        view.addSubview(splashPowerLabel)
-        
-        
         userImg = UIImageView()
         userImg.translatesAutoresizingMaskIntoConstraints = false
         userImg.image = UIImage(named: "tadpoletemp")
         userImg.layer.cornerRadius = Constants.imgViewDimension / 2
         userImg.clipsToBounds = true
         view.addSubview(userImg)
-        
-        
-        
-//        splashPowerProgressBarBackgroundView = UIView()
-//        splashPowerProgressBarBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-//        splashPowerProgressBarBackgroundView.backgroundColor = Colors.darkGray
-//        splashPowerProgressBarBackgroundView.layer.cornerRadius = Constants.splashPowerProgressBarHeight / 2
-//        splashPowerProgressBarBackgroundView.clipsToBounds = true
-//        splashPowerProgressBarBackgroundView.layer.borderColor = UIColor.gray.cgColor
-//        splashPowerProgressBarBackgroundView.layer.borderWidth = 1
-//        view.addSubview(splashPowerProgressBarBackgroundView)
         
         
         currentZoneLabel = UILabel()
@@ -105,13 +78,7 @@ class AccountViewController: UIViewController {
         
         setupConstraints()
         
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         showCurrentUser()
-//        removeSubviews(view: splashPowerProgressBarBackgroundView)
-//        addSplashPowerProgressBar()
     }
     
     func removeSubviews(view: UIView) {
@@ -119,7 +86,6 @@ class AccountViewController: UIViewController {
             subview.removeFromSuperview()
         }
     }
-    
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -143,20 +109,6 @@ class AccountViewController: UIViewController {
             accountEmailLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1 * Constants.horizontalPadding)
             ])
         
-//        NSLayoutConstraint.activate([
-//            splashPowerProgressBarBackgroundView.topAnchor.constraint(equalTo: accountEmailLabel.bottomAnchor, constant: Constants.verticalPadding),
-//            splashPowerProgressBarBackgroundView.heightAnchor.constraint(equalToConstant: Constants.splashPowerProgressBarHeight),
-//            splashPowerProgressBarBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalPadding),
-//            splashPowerProgressBarBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1 * Constants.horizontalPadding)
-//            ])
-//
-//        NSLayoutConstraint.activate([
-//            splashPowerLabel.topAnchor.constraint(equalTo: splashPowerProgressBarBackgroundView.bottomAnchor, constant: Constants.verticalPadding),
-//            splashPowerLabel.heightAnchor.constraint(equalToConstant: 50),
-//            splashPowerLabel.leadingAnchor.constraint(equalTo: accountEmailLabel.leadingAnchor),
-//            splashPowerLabel.trailingAnchor.constraint(equalTo: splashPowerProgressBarBackgroundView.trailingAnchor)
-//            ])
-        
         NSLayoutConstraint.activate([
             currentZoneLabel.topAnchor.constraint(equalTo: accountEmailLabel.bottomAnchor, constant: Constants.verticalPadding),
             currentZoneLabel.leadingAnchor.constraint(equalTo: accountEmailLabel.leadingAnchor),
@@ -167,64 +119,20 @@ class AccountViewController: UIViewController {
         
     }
     
-    
-    
-//    func addSplashPowerProgressBar() {
-//
-//        let splashPowerProgressBarView = UIView()
-//        splashPowerProgressBarView.translatesAutoresizingMaskIntoConstraints = false
-//        splashPowerProgressBarView.backgroundColor = Colors.main
-//        splashPowerProgressBarView.layer.cornerRadius = Constants.splashPowerProgressBarHeight / 2
-//        splashPowerProgressBarView.clipsToBounds = true
-//        splashPowerProgressBarBackgroundView.addSubview(splashPowerProgressBarView)
-//        splashPowerProgressBarBackgroundView.bringSubviewToFront(splashPowerProgressBarView)
-//
-//        NSLayoutConstraint.activate([
-//            splashPowerProgressBarView.topAnchor.constraint(equalTo: splashPowerProgressBarBackgroundView.topAnchor),
-//            splashPowerProgressBarView.heightAnchor.constraint(equalTo: splashPowerProgressBarBackgroundView.heightAnchor),
-//            splashPowerProgressBarView.leadingAnchor.constraint(equalTo: splashPowerProgressBarBackgroundView.leadingAnchor),
-//            splashPowerProgressBarView.widthAnchor.constraint(equalToConstant: getSplashPowerProgressBarWidth())
-//        ])
-//
-//    }
-    
-    
-//    func getSplashPowerProgressBarWidth() -> CGFloat {
-//        let bgwidth = splashPowerProgressBarBackgroundView.frame.width
-//        var w: CGFloat = 0
-//        if let splashPower = System.splashPower {
-//            w = (CGFloat(splashPower) / 100) * bgwidth
-//        }
-//        return w
-//    }
-    
-    
     @objc func signOut() {
         accountEmailLabel.text = ""
-//        splashPowerLabel.text = ""
-        tabBarController?.selectedIndex = 1
         GIDSignIn.sharedInstance().signOut()
         let signInController = SignInSignUpViewController()
         present(signInController, animated: true, completion: nil)
     }
     
     func showCurrentUser() {
-        
-        // Show the user's name
         accountEmailLabel.text = "Hello "
         if let name = System.name {
             accountEmailLabel.text = accountEmailLabel.text! + name + "!"
         } else {
             accountEmailLabel.text = "Hello nobody!"
         }
-        
-        // Show the user their splash power
-//        splashPowerLabel.text = "Your splash power is "
-//        if let sp = System.splashPower {
-//            splashPowerLabel.text = splashPowerLabel.text! + "\(sp)"
-//        } else {
-//            splashPowerLabel.text = splashPowerLabel.text! + "a fat zero."
-//        }
     }
 
     

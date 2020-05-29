@@ -250,7 +250,7 @@ class DatabaseManager {
 //    }
     
     static func getZonesInfo(completion: @escaping ([String]?) ->Void) {
-        if let z = System.currentZone {
+        if System.currentZone != nil {
 //            let name = z.name
 //            zonesRef.child(name).observe(.value, with: { (snapshot) in
             lilyPadsRef.observe(.value, with: { (snapshot) in
@@ -272,15 +272,17 @@ class DatabaseManager {
     
     
     
-    static func addLilypad(lily: Lilypad) {
-        let updates = lily.toDict()
-        lilyPadsRef.childByAutoId().updateChildValues(updates)
-    }
+//    static func addLilypad(lily: Lilypad) {
+//        let updates = lily.toDict()
+//        lilyPadsRef.childByAutoId().updateChildValues(updates)
+//    }
     
     static func addLilypadForZone(lily: Lilypad) {
         if let z = currentZoneRef {
             let updates = lily.toDict()
             z.childByAutoId().updateChildValues(updates)
+//            let comments = []
+            
         }
         else {
             print("wasnt supposed to happen but no current zone ref")

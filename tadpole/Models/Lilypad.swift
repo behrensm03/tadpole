@@ -47,18 +47,6 @@ class Lilypad: Codable {
         self.numCheckins = dict["numCheckins"] as! Int
     }
     
-    
-//    func toDict() -> [String: String] {
-//        let dict: [String: String] = [
-//            "title" : title,
-//            "subtitle" : subtitle,
-//            "poster" : poster,
-//            "latitude" : String(latitude),
-//            "longitude" : String(longitude)
-//        ]
-//        return dict
-//    }
-    
     func toDict() -> [String: Any] {
         let dict: [String: Any] = [
             "title" : title,

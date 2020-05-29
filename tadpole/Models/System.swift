@@ -14,13 +14,11 @@ class System {
     // Account stuff
     static var currentUser: String?
     static var name: String?
-    static var splashPower: Int?
     
     
     
     // Lilypads
     static var lilypads = [Lilypad]()
-//    static var lilypadsForZone = [Lilypad]()
     static var lilyIds = [String]()
     static var activeLilypad: Lilypad?
     static var activeLilypadId: String?
@@ -33,6 +31,10 @@ class System {
     static var currentLocation: CLLocationCoordinate2D?
     static var transformedCoordinates : (Double, Double)? // Store the user location in the custom coordinate system
     static var lastTransformedCoordinates : (Double, Double)? // most recent one but not current
+    
+    
+    // Geometry Calculations - NYC specific
+    // MARK: Convert to JSON input for future addition of cities
     static var zeroCoordinates = (40.712715, -74.037769)
     static var rotateCCW = -36.08 * Double.pi / 180 // radians
     
@@ -52,7 +54,9 @@ class System {
     
     
     
-    
+    // Take a point p with latitude and longitude and convert it to a coordinate in the
+    // custom system defined by zeroCoordinates and rotateCCW
+    // Also switch latitude to y and longitude to x
     static func transformToCustomCoordinates(p: (Double, Double)) -> (Double, Double) {
         // Note: p is lat, long
         let y = p.0 - zeroCoordinates.0
@@ -61,6 +65,8 @@ class System {
         let yprime = (-1 * x * sin(rotateCCW)) + (y * cos(rotateCCW))
         return (xprime, yprime)
     }
+    
+    
     
     static func getZoneByName(name: String) -> Zone? {
         for z in zones {

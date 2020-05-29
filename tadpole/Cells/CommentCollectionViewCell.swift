@@ -20,12 +20,14 @@ class CommentCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         
         
+        // Image View to display the user's profile image
         posterImg = UIImageView()
         posterImg.translatesAutoresizingMaskIntoConstraints = false
         posterImg.image = UIImage(named: "tadpoletemp")
         posterImg.layer.cornerRadius = Constants.commentImageViewDimension / 2
         posterImg.clipsToBounds = true
         contentView.addSubview(posterImg)
+        
         
         commentContainerView = UIView()
         commentContainerView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +36,8 @@ class CommentCollectionViewCell: UICollectionViewCell {
         commentContainerView.backgroundColor = Colors.lightGray
         contentView.addSubview(commentContainerView)
         
+        
+        
         usernameLabel = UILabel()
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         usernameLabel.font = UIFont(name: "Comfortaa-Bold", size: 15)
@@ -41,6 +45,8 @@ class CommentCollectionViewCell: UICollectionViewCell {
         usernameLabel.textAlignment = .left
         usernameLabel.backgroundColor = .clear
         contentView.addSubview(usernameLabel)
+        
+        
         
         commentTextView = UITextView()
         commentTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,8 +95,10 @@ class CommentCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     func configure(for comment: Comment) {
-        // configure user image
+        // MARK: configure user image when that feature is available
         usernameLabel.text = comment.poster
         commentTextView.text = comment.body
     }

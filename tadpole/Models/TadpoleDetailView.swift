@@ -10,21 +10,23 @@ import UIKit
 
 class TadpoleDetailView {
     
+    
     var view: UIView
+    
+    
     var titleLabel: UILabel
     var subtitleLabel: UILabel
-    var dismissButton: UIButton
     var posterLabel: UILabel
-//    var commentsTableView: UITableView
     var checkinsLabel: UILabel
     var checkinsIcon: UIImageView
     
+    var dismissButton: UIButton
     var checkinButton: UIButton
     
     var commentsCollectionView: UICollectionView
     var reuse = "ReuseComment"
     
-    var padding: CGFloat = 10
+    let padding: CGFloat = 10
     
     init() {
         self.view = UIView()
@@ -36,7 +38,6 @@ class TadpoleDetailView {
         self.titleLabel = UILabel()
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.textAlignment = .center
-//        self.titleLabel.backgroundColor = .red
         self.titleLabel.font = UIFont(name: "Comfortaa-Regular", size: 20)
         
         self.subtitleLabel = UILabel()
@@ -49,7 +50,6 @@ class TadpoleDetailView {
         self.posterLabel.translatesAutoresizingMaskIntoConstraints = false
         self.posterLabel.textAlignment = .center
         self.posterLabel.font = UIFont(name: "Comfortaa-Light", size: 15)
-//        self.posterLabel.backgroundColor = .gray
         self.posterLabel.textColor = Colors.main
         
         self.checkinsIcon = UIImageView()
@@ -61,10 +61,6 @@ class TadpoleDetailView {
         self.checkinsLabel.textAlignment = .left
         self.checkinsLabel.font = UIFont(name: "Comfortaa-Light", size: 15)
         self.checkinsLabel.textColor = Colors.darkGray
-        
-//        self.commentsTableView = UITableView()
-//        self.commentsTableView.translatesAutoresizingMaskIntoConstraints = false
-//        self.commentsTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: self.reuse)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

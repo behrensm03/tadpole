@@ -21,7 +21,6 @@
 		128385EE23AF3A0300267937 /* ViewControllerv2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128385ED23AF3A0300267937 /* ViewControllerv2.swift */; };
 		12BAC8C422E9391E00A7834E /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAC8C322E9391E00A7834E /* System.swift */; };
 		12C48F66246FAAAD0051DB58 /* TadpoleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C48F65246FAAAD0051DB58 /* TadpoleDetailView.swift */; };
-		12CBDA302479B4EC00EF35E9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */; };
 		12D2B08E245A8C2100F4B34E /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2B08D245A8C2100F4B34E /* Zone.swift */; };
 		12D2B090245A8C5300F4B34E /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D2B08F245A8C5300F4B34E /* Constraint.swift */; };
 		12DFFED822EA9406009617B7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DFFED722EA9406009617B7 /* DatabaseManager.swift */; };
@@ -69,7 +68,6 @@
 		128385ED23AF3A0300267937 /* ViewControllerv2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerv2.swift; sourceTree = "<group>"; };
 		12BAC8C322E9391E00A7834E /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		12C48F65246FAAAD0051DB58 /* TadpoleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TadpoleDetailView.swift; path = tadpole/Models/TadpoleDetailView.swift; sourceTree = SOURCE_ROOT; };
-		12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = tadpole/Cells/CommentTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		12D2B08D245A8C2100F4B34E /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
 		12D2B08F245A8C5300F4B34E /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		12DFFED722EA9406009617B7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		127CF1C3232AC6F5006E897F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				12CBDA2F2479B4EC00EF35E9 /* CommentTableViewCell.swift */,
 				126656C7247B168800069FE0 /* CommentCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -395,7 +392,6 @@
 				1249DA0823C062430094AFC4 /* LilypadAnnotation.swift in Sources */,
 				12C48F66246FAAAD0051DB58 /* TadpoleDetailView.swift in Sources */,
 				125DBF0922E9302B00231E3B /* SignInSignUpViewController.swift in Sources */,
-				12CBDA302479B4EC00EF35E9 /* CommentTableViewCell.swift in Sources */,
 				1249DA0F23C10A1C0094AFC4 /* LilypadCalloutView.swift in Sources */,
 				12DFFED822EA9406009617B7 /* DatabaseManager.swift in Sources */,
 				123D345B23676B8C00B9BE6E /* Comment.swift in Sources */,

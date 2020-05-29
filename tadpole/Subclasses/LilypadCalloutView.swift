@@ -13,19 +13,6 @@ class LilypadCalloutView: UIView, MGLCalloutView {
     var representedObject: MGLAnnotation
 
     
-//    let dismissesAutomatically: Bool = false
-//    let isAnchoredToAnnotation: Bool = true
-
-//    override var center: CGPoint {
-//        set {
-//            var newCenter = newValue
-//            newCenter.y -= bounds.midY
-//            super.center = newCenter
-//        }
-//        get {
-//            return super.center
-//        }
-//    }
 
     lazy var leftAccessoryView = UIView()
     lazy var rightAccessoryView = UIView()

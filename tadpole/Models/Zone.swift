@@ -29,6 +29,9 @@ class Zone {
         self.constraints.append(constraint)
     }
     
+    
+    // Returns True if a point p is inside this zone
+    // or is inside one of its subzones
     func insideThisZone(p: (Double, Double)) -> Bool {
         if self.subZones.count > 0 {
             for sz in self.subZones {
@@ -48,8 +51,9 @@ class Zone {
     }
     
     
+    // MARK: just for debugging right now, make this pretty later
     func toString() -> String {
-        var res = "Zone: " + String(name) + ", Subzones: ["
+        var res = "Zone: \(name), Subzones: ["
         for sz in subZones {
             res = res + sz.name + ", "
         }

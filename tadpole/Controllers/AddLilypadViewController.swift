@@ -42,10 +42,6 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
         backButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(backButtonTapped))
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationItem.leftBarButtonItem?.tintColor = Colors.main
-
-//        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
-//        self.navigationItem.rightBarButtonItem = saveButton
-//        self.navigationItem.rightBarButtonItem?.tintColor = Colors.main
         
         setupNextButton()
         
@@ -73,15 +69,12 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
     
     func submitNewLilypad() {
         let lily = Lilypad(title: titleField.text!, subtitle: subtitleView.text!, poster: System.currentUser!, latitude: System.currentLocation!.latitude, longitude: System.currentLocation!.longitude, numCheckins: 0)
-//        DatabaseManager.addLilypad(lily: lily)
         DatabaseManager.addLilypadForZone(lily: lily)
     }
     
     
     func incFlowIndex() {
         if (flowIndex >= fields.count - 1) {
-//            flowIndex = 0
-            // this is submit
             submitNewLilypad()
             backButtonTapped()
         } else {
@@ -107,30 +100,7 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
         bgs[flowIndex].isHidden = false
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        setupTextFields()
-//        setupConstraints()
-//    }
-    
-    func setupTextLabels() {
-//        titleLabel = UILabel()
-//        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        titleLabel.text = "Title:"
-//        titleLabel.font = UIFont(name: "Comfortaa-Regular", size: 15)
-//        titleLabel.textColor = Colors.main
-//        view.addSubview(titleLabel)
-//
-//
-//        subtitleLabel = UILabel()
-//        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        subtitleLabel.text = "Body:"
-//        subtitleLabel.font = UIFont(name: "Comfortaa-Regular", size: 15)
-//        subtitleLabel.textColor = Colors.main
-//        subtitleLabel.isHidden = true
-//        view.addSubview(subtitleLabel)
-        
-    }
-    
+
     func setupConstraints() {
         
         NSLayoutConstraint.activate([
@@ -162,7 +132,6 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
         ])
         
         NSLayoutConstraint.activate([
-//            nextButton.topAnchor.constraint(equalTo: fieldBGView.bottomAnchor, constant: topOfNextButton),
             nextButton.topAnchor.constraint(equalTo: subtitleView.bottomAnchor, constant: 3 * Constants.verticalPadding),
             nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nextButton.widthAnchor.constraint(equalToConstant: Constants.defaultButtonWidth),
@@ -201,46 +170,12 @@ class AddLilypadViewController: UIViewController, UITextViewDelegate {
         bgs = [fieldBGView, viewBGView]
         
         
-        
-//        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        let paddingView2 = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        
-        
-//        subtitleField = UITextView()
-//        subtitleField.translatesAutoresizingMaskIntoConstraints = false
-//        subtitleField.textColor = .white
-//        subtitleField.layer.cornerRadius = 5.0
-//        subtitleField.layer.masksToBounds = false
-////        subtitleField.layer.borderColor = UIColor.black.cgColor
-////        subtitleField.layer.borderWidth = 1.0
-//        subtitleField.backgroundColor = Colors.darkGray
-//        subtitleField.font = UIFont.systemFont(ofSize: 12)
-//        subtitleField.isHidden = true
-        
-        
-//        titleField.leftView = paddingView
-//        titleField.leftViewMode = .always
-//        view.addSubview(titleField)
-//        view.addSubview(subtitleField)
-        
-        
     }
     
     
     
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
-    }
-
-    @objc func saveButtonTapped() {
-//        if checkValidLilypad() {
-//            let t = titleField.text!
-//            let s = subtitleField.text!
-//            let lily = Lilypad(title: t, subtitle: s, poster: System.currentUser!, latitude: 1.0, longitude: 1.0)
-//            DatabaseManager.addLilypad(lily: lily)
-//            backButtonTapped()
-//        }
-        backButtonTapped()
     }
 
 
