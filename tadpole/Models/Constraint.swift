@@ -8,10 +8,6 @@
 
 import Foundation
 
-enum constraintType {
-    case north, south, east, west
-}
-
 class Constraint {
 
     var isGreaterThan: Bool

@@ -311,6 +311,11 @@ class DatabaseManager {
         }
     }
     
+    static func addNewUser(user: User) {
+        let updates = user.toDict()
+        usersRef.childByAutoId().updateChildValues(updates)
+    }
+    
     
     // DEPRECATED??
 //    static func getZones(info: [String], completion: @escaping (Bool) -> Void) {

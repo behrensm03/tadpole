@@ -81,7 +81,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UserDefaults.standard.set(name, forKey: "name")
         
         let signedInUser = User(username: username, name: name!)
-        let signedInRef = DatabaseManager.usersRef.child(username)
+        var cleanUsername: String = ""
+        for ch in username {
+            if ch != "." {
+                cleanUsername += String(ch)
+            }
+        }
+        let signedInRef = DatabaseManager.usersRef.child(cleanUsername)
         
         signedInRef.observe(.value) { snapshot in
             print(snapshot)
