@@ -78,6 +78,10 @@ class AccountViewController: UIViewController {
         
         setupConstraints()
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         showCurrentUser()
     }
     

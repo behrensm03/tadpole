@@ -54,7 +54,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         return .lightContent
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setNeedsStatusBarAppearanceUpdate()
@@ -119,7 +118,6 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
         let avc = AccountViewController()
         self.navigationController?.pushViewController(avc, animated: true)
     }
-    
     
     func setupDetailView() {
         tpDetailView = TadpoleDetailView()
@@ -220,14 +218,15 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
 //        print("add checkin here")
         if self.checkinButton.titleLabel?.text == "check in" {
             self.checkinButton.setTitle("✓", for: .normal)
+            // MARK: add to user checkins and also to System.checkins
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
                 self.buttonWidthConstraint.constant = 50
                 self.checkinButton.layoutIfNeeded()
             }) { (complete) in
                 print("adding checkin")
+                System.checkins.append(System.activeLilypadId!)
                 DatabaseManager.updateCheckinsForLilypad(increase: true)
                 self.changeNumCheckinsLabelByOne(isIncrementing: true)
-                // MARK: update the number of checkins - do we reload the comment or just increment and wait till it appears again to reload everything
             }
         } else {
             self.checkinButton.setTitle("check in", for: .normal)
@@ -236,7 +235,8 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
                 self.checkinButton.layoutIfNeeded()
             }) { (complete) in
                 print("removing checkin")
-                // MARK: check if this works - havent tested
+                // MARK: remove this id from System.checkins and from user's checkins
+                System.checkins.remove(at: System.checkins.firstIndex(of: System.activeLilypadId!)!)
                 DatabaseManager.updateCheckinsForLilypad(increase: false)
                 self.changeNumCheckinsLabelByOne(isIncrementing: false)
             }
@@ -898,9 +898,15 @@ class ViewControllerv2: UIViewController, CLLocationManagerDelegate, MGLMapViewD
             animateViewIn(v: detailView)
             System.activeLilypad = lily
             if let id = findIdForLilypad(lilypad: lily) {
-                print("this is the id")
-                print(id)
-                // get comments for this id
+                if System.checkins.contains(id) {
+                    self.checkinButton.setTitle("✓", for: .normal)
+                    self.buttonWidthConstraint.constant = 50
+                    self.checkinButton.layoutIfNeeded()
+                } else {
+                    self.checkinButton.setTitle("check in", for: .normal)
+                    self.buttonWidthConstraint.constant = 100
+                    self.checkinButton.layoutIfNeeded()
+                }
                 System.activeLilypadId = id
                 fetchCommentsForLilypad()
             } else {

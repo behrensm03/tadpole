@@ -88,16 +88,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
         }
         let signedInRef = DatabaseManager.usersRef.child(cleanUsername)
+        DatabaseManager.currentUserRef = signedInRef
         
         signedInRef.observe(.value) { snapshot in
-            print(snapshot)
+//            print(snapshot)
             let alreadyExists = snapshot.hasChild("username")
             if (alreadyExists) {
                 signedInRef.updateChildValues(["username":username, "name":name as Any])
             } else {
                 signedInRef.setValue(signedInUser.toDict())
+                signedInRef.child("checkins").setValue(["none": true])
             }
         }
+        
+        DatabaseManager.getCheckinsForUser()
         
     }
     

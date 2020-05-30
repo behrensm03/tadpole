@@ -38,8 +38,7 @@ class DatabaseManager {
     
     static var currentZoneRef: DatabaseReference? = nil
     
-    
-    
+    static var currentUserRef: DatabaseReference? = nil
     
     // DEPRECATED???
 //    static func getLilypadInfo(completion: @escaping ([String]?) -> Void) {
@@ -202,7 +201,7 @@ class DatabaseManager {
     
     
     static func updateCheckinsForLilypad(increase: Bool) {
-        if let id = System.activeLilypadId, let z = currentZoneRef {
+        if let id = System.activeLilypadId, let z = currentZoneRef, let u = System.currentUser {
             let r = z.child(id)
             r.runTransactionBlock({ (data) -> TransactionResult in
                 if var d = data.value as? [String: Any] {
@@ -222,10 +221,37 @@ class DatabaseManager {
                     print(e.localizedDescription)
                 }
             }
+            usersRef.child(u).child("checkins").child(id).setValue(increase)
+            let isNowNone : Bool = (System.checkins.count == 0)
+            usersRef.child(u).child("checkins").child("none").setValue(isNowNone)
         }
     }
     
-    
+    static func getCheckinsForUser() {
+        System.checkins = []
+        if let userRef = currentUserRef {
+            let checkinsRef = userRef.child("checkins")
+            checkinsRef.observeSingleEvent(of: .value) { (snapshot) in
+                print("checkins ref being examined")
+                if let d = snapshot.value as? [String: Any], let hasNoCheckins = d["none"] as? Bool {
+                    if !hasNoCheckins {
+                        for (id, val) in d {
+                            if let didCheckIn = val as? Bool {
+                                if didCheckIn {
+                                    System.checkins.append(id)
+                                    print("appending \(id)")
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print("something failed")
+                }
+            }
+        } else {
+            print("not even going to try")
+        }
+    }
     
     
     

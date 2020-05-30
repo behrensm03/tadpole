@@ -14,7 +14,7 @@ class System {
     // Account stuff
     static var currentUser: String?
     static var name: String?
-    
+    static var checkins = [String]()
     
     
     // Lilypads
