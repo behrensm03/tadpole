@@ -21,3 +21,6 @@ Pods/
 
 # Playground
 MyPlayground.playground/
+
+# Ignore personal Xcode files
+xcuserdata/
